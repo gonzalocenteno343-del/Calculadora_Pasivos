@@ -1,0 +1,94 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pasivos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+        <h1>Calculadora de Pasivos</h1>
+        <p class="subtitulo">Registro de créditos</p>
+
+        <form id="formCredito">
+
+            <label for="institucion">Institución</label>
+            <input type="text" id="institucion" placeholder="Ej. InstaCredi" required>
+
+            <label for="tipo">Tipo de crédito</label>
+            <input type="text" id="tipo" placeholder="Ej. Comercio" required>
+
+            <label for="plazo">Plazo original (meses)</label>
+            <input type="number" id="plazo" min="1" required>
+
+            <label for="fechaApertura">Fecha de apertura</label>
+            <input type="date" id="fechaApertura" required>
+
+            <label for="fechaReporte">Fecha de reporte</label>
+            <input type="date" id="fechaReporte" required>
+
+            <label for="monto">Monto otorgado</label>
+            <input type="number" id="monto" min="0" step="0.01" required>
+
+            <label for="saldo">Saldo actual</label>
+            <input type="number" id="saldo" min="0" step="0.01" required>
+
+            <label for="cuota">Cuota</label>
+            <input type="number" id="cuota" min="0" step="0.01" required>
+
+            <label for="frecuencia">Frecuencia de cuota</label>
+            <select id="frecuencia" required>
+                <option value="">Seleccione una opción</option>
+                <option value="semanal">Semanal</option>
+                <option value="quincenal">Quincenal</option>
+                <option value="mensual">Mensual</option>
+            </select>
+
+            <button type="submit">Agregar crédito</button>
+            <div id="resultadoCuota" class="resultado"></div>
+            <div id="resultadoMeses" class="resultado"></div>
+            <div id="resultadoRestantes" class="resultado"></div>
+            <div id="resultadoPasivos" class="resultado"></div>
+            <h2>Créditos registrados</h2>
+
+<div class="tabla-contenedor">
+    <table id="tablaCreditos">
+        <thead>
+            <tr>
+                <th>Institución</th>
+                <th>Tipo</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Corto plazo</th>
+                <th>Largo plazo</th>
+                <th>Cuota mensual</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaCreditos">
+        </tbody>
+    </table>
+</div>
+        </form>
+
+    </main>
+
+    <script src="script.js"></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./sw.js");
+        });
+    }
+</script>
+</body>
+</html>
+```
